@@ -32,7 +32,7 @@ const App = () => {
 
     if (personExists.length > 0) {
       const confirm = window.confirm(
-        `${personExists[0].name} is already added to phonebook, replace the old number with a new one`
+        `${personExists[0].name} is already added to phonebook, replace the old number with the new one`
       );
       if (confirm === true) {
         const updatedPerson = {
@@ -56,7 +56,7 @@ const App = () => {
             }, 5000);
           })
           .catch((err) => {
-            setMessage(err.message);
+            setMessage(err.response.data.error);
             setTimeout(() => {
               setMessage(null);
             }, 5000);
@@ -75,7 +75,7 @@ const App = () => {
           setMessage(`Added ${response.name}`);
         })
         .catch((err) => {
-          setMessage(err.message);
+          setMessage(err.response.data.error);
         });
 
       setTimeout(() => {
@@ -99,7 +99,7 @@ const App = () => {
   //Deleting person
   const handleDeletePerson = (id) => {
     const selectedPerson = persons.filter((person) => person.id === id);
-
+    console.log(id);
     if (
       window.confirm(
         `${selectedPerson[0].name} will be removed from phonebook`

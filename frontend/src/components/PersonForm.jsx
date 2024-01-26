@@ -21,7 +21,7 @@ const PersonForm = ({
         <input
           value={newNumber}
           onChange={handleChangeNumber}
-          type="number"
+          type="string"
           required
         />
       </div>
